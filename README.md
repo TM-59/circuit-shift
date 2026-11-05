@@ -33,9 +33,12 @@ domain, application, infrastructure and presentation layers; composition wires
 adapters. Core and storage packages are empty until their own milestones.
 
 - M1: vocabulary, boundaries, health API and checks (this version).
-- M2: Board aggregate, tile values, rotation, connectivity and events; domain tests.
-- M3: start/rotate/read use cases, repository port and SQLite transactions.
-- M4: one browser screen to rotate tiles, see powered lamps and restart a board.
+- [M2](https://github.com/TM-59/circuit-shift/issues/2): Board aggregate, tile values,
+  rotation, connectivity and events; domain tests.
+- [M3](https://github.com/TM-59/circuit-shift/issues/3): start/rotate/read use cases,
+  repository port and SQLite transactions.
+- [M4](https://github.com/TM-59/circuit-shift/issues/4): one browser screen to rotate
+  tiles, see powered lamps and restart a board.
 
 No deployment, external artwork or database is included in M1. Gameplay, usability
 and cross-platform behavior remain unverified. WASM is a later optional experiment.
