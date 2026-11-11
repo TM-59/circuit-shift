@@ -4,8 +4,25 @@ A circuit tile rotation puzzle built with Python 3.14 and FastAPI. Turn wire til
 to connect a source to every lamp within a move budget. The domain stays separate
 from HTTP validation and persistence.
 
-**Current stage: M1 scaffold.** The health API and architecture checks work.
-Puzzle rules, storage and a playable browser screen are planned, not implemented.
+**Current stage: M2, the pure rules.** Tiles, rotation, connectivity, the board
+aggregate with its move budget and the two domain events are implemented with the
+standard library only. Storage and a playable browser screen are planned, not
+implemented; the HTTP side is still the health API.
+
+The rules can be tried from Python without FastAPI:
+
+```sh
+PYTHONPATH=src python3 -c "
+from circuit_shift.domain import Cell, starter_board
+board = starter_board()
+for cell in (Cell(0, 1), Cell(0, 2), Cell(0, 2), Cell(1, 1)):
+    print(board.rotate(cell))
+print(board.state)
+"
+```
+
+The starter board is 3 x 3 with one source and two lamps; four rotations solve it
+and the budget is six.
 
 ## Run locally
 
