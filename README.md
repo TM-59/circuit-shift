@@ -24,6 +24,11 @@ print(board.state)
 The starter board is 3 x 3 with one source and two lamps; four rotations solve it
 and the budget is six.
 
+**Theory handbook**: [docs/theory/](docs/theory/README.md) — 8 statements (the language, clockwise ports,
+connections, power as reachability, a valid board, one rotation and its three states, the starter board's
+solutions, the dependency rule), each with its rule, assumptions, derivation, code, tests and a figure.
+`make theory-figs` regenerates the figures and the measured values; `make theory-check` checks the coverage table.
+
 ## Run locally
 
 Install [uv](https://docs.astral.sh/uv/getting-started/installation/), then:
