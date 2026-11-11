@@ -1,7 +1,8 @@
 # Circuit routing context
 
 Circuit Shift is a single-player tile rotation puzzle. Connect a source to every
-lamp within a move budget. These are the planned M2 rules; M1 has no gameplay.
+lamp within a move budget. M2 implements these rules as a pure domain
+(`src/circuit_shift/domain/model.py`); storage and the screen follow in M3 and M4.
 The model is a graph puzzle, not a simulation of electrical current.
 
 | Term | Meaning and planned model |
