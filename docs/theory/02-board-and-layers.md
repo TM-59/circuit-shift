@@ -77,7 +77,7 @@ stateDiagram-v2
 
 $$\text{composition} \;\to\; \{\text{presentation},\ \text{infrastructure}\} \;\to\; \text{application} \;\to\; \text{domain} .$$
 
-Presentation and infrastructure do not import each other. The domain and the application import none of FastAPI, Pydantic, Uvicorn and sqlite3; the domain uses the standard library only.
+Presentation and infrastructure do not import each other. The domain and the application import none of FastAPI, Pydantic, Uvicorn and sqlite3; the domain uses the standard library only. The SQLite repository implements the application-owned port; composition wires it to the use cases.
 
 **Assumptions and where they break.** The rule is about import statements; the second test below, which imports the core with third-party packages unavailable, also catches an import hidden inside a function for packages outside the standard library.
 
@@ -94,9 +94,9 @@ flowchart TD
     D -. "imports only the standard library" .-> STD["collections.abc, dataclasses, enum"]
 ```
 
-**Code.** The two Import Linter contracts in `pyproject.toml` (`Adapters point inward and remain independent`, `Core excludes web frameworks, validation and storage adapters`); `src/circuit_shift/domain/__init__.py` exports the fifteen names of S01.
+**Code.** The two Import Linter contracts in `pyproject.toml` (`Adapters point inward and remain independent`, `Core excludes web frameworks, validation and storage adapters`); `src/circuit_shift/application/ports.py`, `src/circuit_shift/infrastructure/repository.py` and `src/circuit_shift/composition.py` implement and wire the persistence boundary; `src/circuit_shift/domain/__init__.py` exports the fifteen names of S01.
 
-**Tests.** `make check` runs Import Linter (2 contracts kept); `test_REQ_CORE_imports_without_site_packages` in `tests/test_scaffold.py` starts Python with site packages disabled and imports the domain and the application.
+**Tests.** `make check` runs Import Linter (2 contracts kept); `test_REQ_CORE_imports_without_site_packages` in `tests/test_scaffold.py` starts Python with site packages disabled and imports the domain and the application; `tests/test_persistence.py` exercises SQLite through the composition root.
 
 ## References
 

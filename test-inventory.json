@@ -13,11 +13,13 @@
         "REQ-CORE",
         "REQ-TILE",
         "REQ-CONNECT",
-        "REQ-BOARD"
+        "REQ-BOARD",
+        "REQ-USECASE"
       ]
     },
     "integration": {
-      "reason": "Deferred until SQLite persistence in M3."
+      "framework": "pytest",
+      "requirements": ["REQ-PERSISTENCE", "REQ-ATOMIC"]
     },
     "e2e": {
       "reason": "Deferred until the playable screen in M4."
@@ -35,7 +37,7 @@
       "reason": "No deployed infrastructure."
     },
     "trace": {
-      "reason": "No event pipeline until M3."
+      "reason": "Ordered domain-event persistence is covered by REQ-PERSISTENCE integration tests."
     }
   }
 }

@@ -15,18 +15,40 @@ clock = time.monotonic()
 run_id = started.strftime("%Y%m%dT%H%M%S%fZ")
 folder = Path("test-results") / run_id
 folder.mkdir(parents=True)
-junit = folder / "unit-pytest.xml"
 mode = sys.argv[1]
 if mode not in {"test", "check"}:
     raise SystemExit("expected test or check")
-commands = [[sys.executable, "-m", "pytest", "-q", f"--junitxml={junit}"]]
+test_suites = [
+    (
+        "unit",
+        ["REQ-HEALTH", "REQ-CORE", "REQ-TILE", "REQ-CONNECT", "REQ-BOARD", "REQ-USECASE"],
+        ["-m", "not integration"],
+    )
+]
 if mode == "check":
-    commands += [
+    test_suites.append(("integration", ["REQ-PERSISTENCE", "REQ-ATOMIC"], ["-m", "integration"]))
+test_commands = [
+    [
+        sys.executable,
+        "-m",
+        "pytest",
+        "-q",
+        *selection,
+        f"--junitxml={folder / f'{kind}-pytest.xml'}",
+    ]
+    for kind, _, selection in test_suites
+]
+check_commands = (
+    [
         ["ruff", "check", "."],
         ["ruff", "format", "--check", "."],
         ["mypy"],
         ["lint-imports", "--no-cache"],
     ]
+    if mode == "check"
+    else []
+)
+commands = [*test_commands, *check_commands]
 results = []
 durations = []
 for command in commands:
@@ -39,12 +61,31 @@ for command in commands:
     except subprocess.TimeoutExpired, OSError:
         results.append(124)
     durations.append(round(time.monotonic() - command_started, 3))
+suite_counts = []
 counts = dict(tests=0, failures=0, errors=0, skipped=0)
-if junit.exists():
-    for case in ET.parse(junit).iter("testcase"):
-        counts["tests"] += 1
-        for node, key in [("failure", "failures"), ("error", "errors"), ("skipped", "skipped")]:
-            counts[key] += int(case.find(node) is not None)
+for index, (kind, requirements, _) in enumerate(test_suites):
+    junit = folder / f"{kind}-pytest.xml"
+    suite_count = dict(tests=0, failures=0, errors=0, skipped=0)
+    if junit.exists():
+        for case in ET.parse(junit).iter("testcase"):
+            suite_count["tests"] += 1
+            for node, key in [("failure", "failures"), ("error", "errors"), ("skipped", "skipped")]:
+                suite_count[key] += int(case.find(node) is not None)
+    for key in counts:
+        counts[key] += suite_count[key]
+    suite_counts.append(
+        dict(
+            kind=kind,
+            framework="pytest",
+            command=test_commands[index],
+            status="pass" if results[index] == 0 and suite_count["tests"] else "fail",
+            duration_seconds=durations[index],
+            counts=suite_count,
+            junit=str(junit) if junit.exists() else None,
+            requirements=requirements,
+            reason="test process timed out or failed to start" if results[index] == 124 else None,
+        )
+    )
 status = "pass" if not any(results) and counts["tests"] else "fail"
 git = subprocess.run(["git", "rev-parse", "HEAD"], capture_output=True, text=True, check=True)
 dirty = subprocess.run(
@@ -85,21 +126,9 @@ summary = dict(
             comparison="eq",
             reason="check timed out or failed to start" if code == 124 else None,
         )
-        for index, code in enumerate(results[1:], 1)
+        for index, code in enumerate(results[len(test_commands) :], 1)
     ],
-    suites=[
-        dict(
-            kind="unit",
-            framework="pytest",
-            command=commands[0],
-            status="pass" if results[0] == 0 and counts["tests"] else "fail",
-            duration_seconds=durations[0],
-            counts=counts,
-            junit=str(junit) if junit.exists() else None,
-            requirements=["REQ-HEALTH", "REQ-CORE", "REQ-TILE", "REQ-CONNECT", "REQ-BOARD"],
-            reason="unit process timed out or failed to start" if results[0] == 124 else None,
-        )
-    ],
+    suites=suite_counts,
 )
 text = json.dumps(summary, indent=2) + "\n"
 (folder / "summary.json").write_text(text)
