@@ -36,12 +36,12 @@ flowchart TD
 | S05 | A valid board: one source, a lamp, a positive budget | [2](02-board-and-layers.md) | mermaid | `src/circuit_shift/domain/model.py#Board` | `tests/test_domain.py#test_REQ_BOARD_creation_rejects_malformed_boards` |
 | S06 | One rotation: a move, the derived state, the events | [2](02-board-and-layers.md) | mermaid | `src/circuit_shift/domain/model.py#def rotate`, `src/circuit_shift/domain/model.py#TileRotated`, `src/circuit_shift/domain/model.py#BoardSolved`, `src/circuit_shift/domain/model.py#BoardFinished`, `src/circuit_shift/domain/model.py#InvalidRotation` | `tests/test_domain.py#test_REQ_BOARD_solving_on_the_last_move_wins`, `tests/test_domain.py#test_REQ_BOARD_invalid_commands_cost_nothing` |
 | S07 | The starter board is solvable in four moves | [2](02-board-and-layers.md) | `figures/starter.svg`, `figures/solutions.svg` | `src/circuit_shift/domain/model.py#starter_board`, `src/circuit_shift/domain/model.py#tile(` | `tests/test_domain.py#test_REQ_BOARD_starter_needs_four_rotations_found_by_search`, `scripts/theory_figs.py#starter-shortest-play` |
-| S08 | Layers and the inward dependency rule | [2](02-board-and-layers.md) | mermaid | `pyproject.toml#Adapters point inward and remain independent` | `tests/test_scaffold.py#test_REQ_CORE_imports_without_site_packages` |
+| S08 | Layers and the inward dependency rule | [2](02-board-and-layers.md) | mermaid | `pyproject.toml#Adapters point inward and remain independent`, `src/circuit_shift/application/ports.py`, `src/circuit_shift/infrastructure/repository.py`, `src/circuit_shift/composition.py` | `tests/test_scaffold.py#test_REQ_CORE_imports_without_site_packages`, `tests/test_persistence.py#test_REQ_PERSISTENCE_state_and_ordered_events_survive_reopen` |
 
 Tests named `scripts/theory_figs.py#…` are measurements recorded in [figures/values.md](figures/values.md) by `make theory-figs`, not assertions of `make check`.
 
 ## Reading the source against this table
 
-Reviewed for this handbook: all of `src/circuit_shift/domain/model.py` (the fifteen names exported by `src/circuit_shift/domain/__init__.py`), the two Import Linter contracts in `pyproject.toml`, and `tests/test_domain.py`. The application, infrastructure and presentation packages hold no rules yet (M3, M4).
+Reviewed for this handbook: all of `src/circuit_shift/domain/model.py` (the fifteen names exported by `src/circuit_shift/domain/__init__.py`), the two Import Linter contracts in `pyproject.toml`, the application port, SQLite repository and composition wiring, and the domain, application and persistence tests. Presentation remains a health-only adapter; playable routes are M4.
 
 The program is unchanged by this handbook: it adds `scripts/theory_figs.py`, `scripts/theory_check.py`, two Makefile targets, one Ruff per-file setting and these pages.

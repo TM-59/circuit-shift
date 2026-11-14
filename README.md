@@ -4,10 +4,10 @@ A circuit tile rotation puzzle built with Python 3.14 and FastAPI. Turn wire til
 to connect a source to every lamp within a move budget. The domain stays separate
 from HTTP validation and persistence.
 
-**Current stage: M2, the pure rules.** Tiles, rotation, connectivity, the board
-aggregate with its move budget and the two domain events are implemented with the
-standard library only. Storage and a playable browser screen are planned, not
-implemented; the HTTP side is still the health API.
+**Current stage: M3, transactional persistence.** The domain rules and events use
+the standard library. Start, read and rotate use cases persist board snapshots and
+ordered events transactionally in SQLite; the HTTP side is still the health API,
+and a playable browser screen is planned.
 
 The rules can be tried from Python without FastAPI:
 
@@ -43,24 +43,27 @@ Visit http://localhost:8000/health for the status response. The root is currentl
 404. Automatic documentation UIs are disabled to avoid loading remote assets;
 /openapi.json remains available. The server binds to localhost only.
 
-`make test` runs the unit suite. `make check` also runs Ruff, strict mypy and
-Import Linter. Both keep native JUnit and summary.json in ignored test-results
-folders. A new run preserves previous results, including failures and timeouts.
+`make test` runs the unit suite. `make check` also runs SQLite integration tests,
+Ruff, strict mypy and Import Linter. Both keep native JUnit and summary.json in
+ignored test-results folders. A new run preserves previous results, including
+failures and timeouts.
+The server stores its local database at `test-results/circuit-shift.sqlite3` by
+default; set `CIRCUIT_SHIFT_DB_PATH` to use another file.
 
 ## Structure and next steps
 
 See [domain language and boundaries](docs/domain.md) and
-[M1 requirements](docs/requirements.md). The src/circuit_shift package contains
+[requirements](docs/requirements.md). The src/circuit_shift package contains
 domain, application, infrastructure and presentation layers; composition wires
-adapters. Core and storage packages are empty until their own milestones.
+the SQLite adapter and health API.
 
-- M1: vocabulary, boundaries, health API and checks (this version).
+- M1: vocabulary, boundaries, health API and checks.
 - [M2](https://github.com/TM-59/circuit-shift/issues/2): Board aggregate, tile values,
   rotation, connectivity and events; domain tests.
 - [M3](https://github.com/TM-59/circuit-shift/issues/3): start/rotate/read use cases,
-  repository port and SQLite transactions.
+  repository port, transactional SQLite persistence and restart tests (this version).
 - [M4](https://github.com/TM-59/circuit-shift/issues/4): one browser screen to rotate
   tiles, see powered lamps and restart a board.
 
-No deployment, external artwork or database is included in M1. Gameplay, usability
-and cross-platform behavior remain unverified. WASM is a later optional experiment.
+No deployment or external artwork is included. Gameplay, usability and cross-platform
+behavior remain unverified. WASM is a later optional experiment.
