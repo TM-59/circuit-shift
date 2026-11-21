@@ -8,18 +8,18 @@
 <circle cx="67.0" cy="107.0" r="5" fill="#777777"/>
 <text x="180" y="60" fill="#222">corner, 1: e s</text>
 <rect x="180" y="70" width="74" height="74" fill="#f4f4f4" stroke="#cccccc"/>
-<line x1="217.0" y1="107.0" x2="217.0" y2="144.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
 <line x1="217.0" y1="107.0" x2="254.0" y2="107.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
+<line x1="217.0" y1="107.0" x2="217.0" y2="144.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
 <circle cx="217.0" cy="107.0" r="5" fill="#777777"/>
 <text x="330" y="60" fill="#222">corner, 2: s w</text>
 <rect x="330" y="70" width="74" height="74" fill="#f4f4f4" stroke="#cccccc"/>
-<line x1="367.0" y1="107.0" x2="330.0" y2="107.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
 <line x1="367.0" y1="107.0" x2="367.0" y2="144.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
+<line x1="367.0" y1="107.0" x2="330.0" y2="107.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
 <circle cx="367.0" cy="107.0" r="5" fill="#777777"/>
 <text x="480" y="60" fill="#222">corner, 3: n w</text>
 <rect x="480" y="70" width="74" height="74" fill="#f4f4f4" stroke="#cccccc"/>
-<line x1="517.0" y1="107.0" x2="480.0" y2="107.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
 <line x1="517.0" y1="107.0" x2="517.0" y2="70.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
+<line x1="517.0" y1="107.0" x2="480.0" y2="107.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
 <circle cx="517.0" cy="107.0" r="5" fill="#777777"/>
 <text x="30" y="180" fill="#222">bar, 0: n s</text>
 <rect x="30" y="190" width="74" height="74" fill="#f4f4f4" stroke="#cccccc"/>
@@ -28,8 +28,8 @@
 <circle cx="67.0" cy="227.0" r="5" fill="#777777"/>
 <text x="180" y="180" fill="#222">bar, 1: e w</text>
 <rect x="180" y="190" width="74" height="74" fill="#f4f4f4" stroke="#cccccc"/>
-<line x1="217.0" y1="227.0" x2="180.0" y2="227.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
 <line x1="217.0" y1="227.0" x2="254.0" y2="227.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
+<line x1="217.0" y1="227.0" x2="180.0" y2="227.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
 <circle cx="217.0" cy="227.0" r="5" fill="#777777"/>
 <text x="330" y="180" fill="#222">bar, 2: n s</text>
 <rect x="330" y="190" width="74" height="74" fill="#f4f4f4" stroke="#cccccc"/>
@@ -38,31 +38,31 @@
 <circle cx="367.0" cy="227.0" r="5" fill="#777777"/>
 <text x="480" y="180" fill="#222">bar, 3: e w</text>
 <rect x="480" y="190" width="74" height="74" fill="#f4f4f4" stroke="#cccccc"/>
-<line x1="517.0" y1="227.0" x2="480.0" y2="227.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
 <line x1="517.0" y1="227.0" x2="554.0" y2="227.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
+<line x1="517.0" y1="227.0" x2="480.0" y2="227.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
 <circle cx="517.0" cy="227.0" r="5" fill="#777777"/>
 <text x="30" y="300" fill="#222">T, 0: e n s</text>
 <rect x="30" y="310" width="74" height="74" fill="#f4f4f4" stroke="#cccccc"/>
 <line x1="67.0" y1="347.0" x2="67.0" y2="310.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
-<line x1="67.0" y1="347.0" x2="67.0" y2="384.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
 <line x1="67.0" y1="347.0" x2="104.0" y2="347.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
+<line x1="67.0" y1="347.0" x2="67.0" y2="384.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
 <circle cx="67.0" cy="347.0" r="5" fill="#777777"/>
 <text x="180" y="300" fill="#222">T, 1: e s w</text>
 <rect x="180" y="310" width="74" height="74" fill="#f4f4f4" stroke="#cccccc"/>
-<line x1="217.0" y1="347.0" x2="180.0" y2="347.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
-<line x1="217.0" y1="347.0" x2="217.0" y2="384.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
 <line x1="217.0" y1="347.0" x2="254.0" y2="347.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
+<line x1="217.0" y1="347.0" x2="217.0" y2="384.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
+<line x1="217.0" y1="347.0" x2="180.0" y2="347.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
 <circle cx="217.0" cy="347.0" r="5" fill="#777777"/>
 <text x="330" y="300" fill="#222">T, 2: n s w</text>
 <rect x="330" y="310" width="74" height="74" fill="#f4f4f4" stroke="#cccccc"/>
-<line x1="367.0" y1="347.0" x2="330.0" y2="347.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
 <line x1="367.0" y1="347.0" x2="367.0" y2="310.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
 <line x1="367.0" y1="347.0" x2="367.0" y2="384.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
+<line x1="367.0" y1="347.0" x2="330.0" y2="347.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
 <circle cx="367.0" cy="347.0" r="5" fill="#777777"/>
 <text x="480" y="300" fill="#222">T, 3: e n w</text>
 <rect x="480" y="310" width="74" height="74" fill="#f4f4f4" stroke="#cccccc"/>
-<line x1="517.0" y1="347.0" x2="480.0" y2="347.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
 <line x1="517.0" y1="347.0" x2="517.0" y2="310.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
 <line x1="517.0" y1="347.0" x2="554.0" y2="347.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
+<line x1="517.0" y1="347.0" x2="480.0" y2="347.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
 <circle cx="517.0" cy="347.0" r="5" fill="#777777"/>
 </svg>

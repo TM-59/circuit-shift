@@ -64,7 +64,9 @@ def draw(
                 continue
             colour = "#e6a800" if cell in powered else "#777777"
             cx, cy = x + (SIZE - 4) / 2, y + (SIZE - 4) / 2
-            for port in piece.ports:
+            for port in Port:
+                if port not in piece.ports:
+                    continue
                 ex, ey = END[port]
                 out.append(
                     f'<line x1="{cx:.1f}" y1="{cy:.1f}" x2="{x + ex * (SIZE - 4):.1f}" '

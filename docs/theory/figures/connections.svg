@@ -20,8 +20,8 @@
 <rect x="384.0" y="94.0" width="26" height="26" fill="#1f77b4"/>
 <text x="397.0" y="111.0" text-anchor="middle" fill="#ffffff" font-size="11">S</text>
 <rect x="438" y="70" width="74" height="74" fill="#f4f4f4" stroke="#cccccc"/>
-<line x1="475.0" y1="107.0" x2="438.0" y2="107.0" stroke="#e6a800" stroke-width="8" stroke-linecap="round"/>
 <line x1="475.0" y1="107.0" x2="512.0" y2="107.0" stroke="#e6a800" stroke-width="8" stroke-linecap="round"/>
+<line x1="475.0" y1="107.0" x2="438.0" y2="107.0" stroke="#e6a800" stroke-width="8" stroke-linecap="round"/>
 <circle cx="475.0" cy="107.0" r="5" fill="#e6a800"/>
 <rect x="516" y="70" width="74" height="74" fill="#f4f4f4" stroke="#cccccc"/>
 <line x1="553.0" y1="107.0" x2="516.0" y2="107.0" stroke="#e6a800" stroke-width="8" stroke-linecap="round"/>
@@ -45,8 +45,8 @@
 <rect x="384.0" y="224.0" width="26" height="26" fill="#1f77b4"/>
 <text x="397.0" y="241.0" text-anchor="middle" fill="#ffffff" font-size="11">S</text>
 <rect x="438" y="200" width="74" height="74" fill="#f4f4f4" stroke="#cccccc"/>
-<line x1="475.0" y1="237.0" x2="438.0" y2="237.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
 <line x1="475.0" y1="237.0" x2="512.0" y2="237.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
+<line x1="475.0" y1="237.0" x2="438.0" y2="237.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
 <circle cx="475.0" cy="237.0" r="5" fill="#777777"/>
 <rect x="516" y="200" width="74" height="74" fill="#f4f4f4" stroke="#cccccc"/>
 <line x1="553.0" y1="237.0" x2="590.0" y2="237.0" stroke="#777777" stroke-width="8" stroke-linecap="round"/>
